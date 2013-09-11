@@ -1,5 +1,7 @@
 # Rockstar [![Build Status](https://secure.travis-ci.org/putpat/rockstar.png?branch=master)](https://next.travis-ci.org/putpat/rockstar)
 
+* Updated to include Listeners (Navid)
+
 Rockstar is a wrapper for the last.fm audioscrobbler web services (http://www.last.fm/api/). This gem is based on the scrobbler
 gem by John Nunemaker and was updated to use the 2.0 version of the last.fm api
 
@@ -141,6 +143,10 @@ details can be found in Rockstar::Auth or examples/scrobble.rb
     puts 'Fans'
     puts "=" * 4
     track.fans.each { |u| puts "(#{u.weight}) #{u.username}" }
+
+    # Display number of listeners per track
+    track_info = track.load_info
+    puts track_info.listeners 
 
     track.love(session.key)
 
