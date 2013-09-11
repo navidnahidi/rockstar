@@ -188,7 +188,7 @@ module Rockstar
       self.chartposition = self.rank = xml['rank']                 if xml['rank']
       self.url           = Base.fix_url((xml).at(:url).inner_html) if (xml).at(:url)
       self.streamable    = (xml).at(:track)['streamable']          if (xml).at(:track) && (xml).at(:track)['streamable']
-      self.listeners     = (xml).at(:track)['listeners']           if (xml).at(:track) && (xml).at(:track)['listeners']
+      self.listeners     = (xml).at(:listeners).inner_html         if (xml).at(:listeners)
       self.streamable    = (xml).at(:streamable).inner_html == '1' ? 'yes' : 'no' if streamable.nil? && (xml).at(:streamable)
       self.duration      = (xml).at(:duration).inner_html.to_i     if (xml).at(:duration)
 
